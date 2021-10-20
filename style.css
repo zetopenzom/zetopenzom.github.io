@@ -1,12 +1,28 @@
 .jumbotron {
   padding-top: 6rem;
-  background-color: #e2edff;
+  background-color: #ffe6e6;
 }
 
 #projects {
-  background-color: #e2edff;
+  background-color: #ffe6e6;
 }
 
 section {
   padding-top: 5rem;
+}
+
+.bg-red {
+  background-color: #ff1a1a;
+}
+
+.bg-light-red {
+  background-color: #ffe6e6;
+}
+
+a {
+  color: #ff1a1a;
+}
+
+.logo-perusahaan {
+  height: 150px;
 }
