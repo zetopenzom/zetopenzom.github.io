@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Portfolio | Bayu Ramadhani</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -22,11 +23,20 @@
     <link
       rel="stylesheet"
       href="style.css" />
-    <title>Portfolio | Bayu Ramadhani</title>
+    <!-- React JS -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body id="home">
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-red shadow-sm fixed-top">
+    <div id="navbar"></div>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-red shadow-sm fixed-top">
       <div class="container">
         <a
           class="navbar-brand"
@@ -79,7 +89,7 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> -->
 
     <!-- BERANDA -->
     <section class="jumbotron text-center">
@@ -87,7 +97,7 @@
         src="img/bayu.JPG"
         alt="Bayu Ramadhani"
         width="200"
-        class="rounded-circle img-thumbnail" />
+        class="rounded-circle img-thumbnail shadow-lg" />
       <h1 class="display-4 fw-bolder">BAYU RAMADHANI S. KOM</h1>
       <p class="lead fw-bold">Universitas Mulawarman | Jurusan Ilmu Komputer</p>
       <p class="lead fw-bold">
@@ -455,6 +465,68 @@
         >
       </p>
     </footer>
+
+    <script type="text/babel">
+      function Navbar() {
+        return (
+          <nav class="navbar navbar-expand-lg navbar-dark bg-red shadow-sm fixed-top">
+            <div class="container">
+              <a
+                class="navbar-brand"
+                href="#">
+                Portfolio Bayu Ramadhani
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse"
+                id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="#home">
+                      Beranda
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      href="#about">
+                      Tentang Saya
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      href="#projects">
+                      Riwayat Pekerjaan
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      href="#contact">
+                      Kontak
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        );
+      }
+      ReactDOM.createRoot(document.getElementById("navbar")).render(<Navbar />);
+    </script>
 
     <!-- BS5 -->
     <script
