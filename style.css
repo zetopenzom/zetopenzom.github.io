@@ -30,3 +30,8 @@ a {
 .hideme {
     opacity:0;
 }
+
+.img_rp {
+  height: 50px;
+  margin-right: 7px;
+}
