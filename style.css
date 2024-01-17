@@ -46,6 +46,28 @@ a {
   padding-right: 10%;
 }
 
+#fb {
+  background-color: #17A9FD;
+}
+#wa {
+  background-color: #25d366;
+}
+#ig {
+  background-color: #C13584;
+}
+#git {
+  background-color: #000;
+}
+#ln {
+  background-color: #0077b5;
+}
+#yt {
+  background-color: #ff0000;
+}
+#email {
+  background-color: #4285F4;
+}
+
 .path-0 {
   animation: pathAnim-0 4s;
   animation-timing-function: linear;

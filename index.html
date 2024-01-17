@@ -345,7 +345,7 @@
 
                     {/* ACCORDION */}
                     <div
-                      class="accordion hideme"
+                      class="accordion"
                       id="accordionExample">
                       {/* RDMP JO */}
                       <div class="accordion-item">
@@ -410,7 +410,7 @@
                         </div>
                       </div>
                       {/* SMI */}
-                      <div class="accordion-item">
+                      <div class="accordion-item hideme">
                         <h2 class="accordion-header">
                           <button
                             class="accordion-button collapsed"
@@ -465,7 +465,7 @@
                         </div>
                       </div>
                       {/* JOY */}
-                      <div class="accordion-item">
+                      <div class="accordion-item hideme">
                         <h2 class="accordion-header">
                           <button
                             class="accordion-button collapsed"
@@ -523,7 +523,7 @@
                         </div>
                       </div>
                       {/* BUMIDA */}
-                      <div class="accordion-item">
+                      <div class="accordion-item hideme">
                         <h2 class="accordion-header">
                           <button
                             class="accordion-button collapsed"
@@ -622,11 +622,13 @@
                 {/*} FIRST ROW */}
                 <div className="row justify-content-center text-center hideme">
                   <div className="col-md-3">
-                    <h5 className="p-3 m-2 bg-light-red">
+                    <h5
+                      className="p-3 m-2 text-light rounded"
+                      id="fb">
                       <i className="bi-facebook"></i>
                       <a
                         href="https://facebook.com/zetopenzom"
-                        className="text-decoration-none"
+                        className="text-decoration-none text-light"
                         target="_blank">
                         {" "}
                         Zeto Penzom
@@ -634,11 +636,13 @@
                     </h5>
                   </div>
                   <div className="col-md-3">
-                    <h5 className="p-3 m-2 bg-light-red">
+                    <h5
+                      className="p-3 m-2 text-light rounded"
+                      id="wa">
                       <i className="bi-whatsapp"></i>
                       <a
                         href="https://wa.me/6285845750937"
-                        className="text-decoration-none"
+                        className="text-decoration-none text-light"
                         target="_blank">
                         {" "}
                         +62 858-4575-0937
@@ -646,11 +650,13 @@
                     </h5>
                   </div>
                   <div className="col-md-3">
-                    <h5 className="p-3 m-2 bg-light-red">
+                    <h5
+                      className="p-3 m-2 text-light rounded"
+                      id="ig">
                       <i className="bi-instagram"></i>
                       <a
                         href="https://www.instagram.com/zetopenzom"
-                        className="text-decoration-none"
+                        className="text-decoration-none text-light"
                         target="_blank">
                         {" "}
                         zetopenzom
@@ -661,11 +667,13 @@
                 {/*} SECOND ROW */}
                 <div className="row justify-content-center text-center hideme">
                   <div className="col-md-3">
-                    <h5 className="p-3 m-2 bg-light-red">
+                    <h5
+                      className="p-3 m-2 text-light rounded"
+                      id="git">
                       <i className="bi-github"></i>
                       <a
                         href="https://github.com/zetopenzom"
-                        className="text-decoration-none"
+                        className="text-decoration-none text-light"
                         target="_blank">
                         {" "}
                         zetopenzom
@@ -673,11 +681,13 @@
                     </h5>
                   </div>
                   <div className="col-md-3">
-                    <h5 className="p-3 m-2 bg-light-red">
+                    <h5
+                      className="p-3 m-2 text-light rounded"
+                      id="ln">
                       <i className="bi-linkedin"></i>
                       <a
                         href="https://www.linkedin.com/in/zetopenzom/"
-                        className="text-decoration-none"
+                        className="text-decoration-none text-light"
                         target="_blank">
                         {" "}
                         Bayu Ramadhani
@@ -685,11 +695,13 @@
                     </h5>
                   </div>
                   <div className="col-md-3">
-                    <h5 className="p-3 m-2 bg-light-red">
+                    <h5
+                      className="p-3 m-2 text-light rounded"
+                      id="yt">
                       <i className="bi-youtube"></i>
                       <a
                         href="https://www.youtube.com/channel/UCeuw2XPPwLRNPgI8ttBzZhg"
-                        className="text-decoration-none"
+                        className="text-decoration-none text-light"
                         target="_blank">
                         {" "}
                         Zeto Penzom
@@ -700,7 +712,9 @@
                 {/*} THIRD ROW */}
                 <div className="row justify-content-center text-center hideme">
                   <div className="col-md-9">
-                    <h5 className="p-3 m-2 bg-light-red">
+                    <h5
+                      className="p-3 m-2 text-light rounded"
+                      id="email">
                       <i className="bi-envelope"></i> bayu1802@gmail.com
                     </h5>
                   </div>
@@ -746,7 +760,7 @@
                 </a>
               </p>
               <p className="hideme">This page was built by using HTML, CSS and Javascript.</p>
-              <p className="hideme">Framework : Bootstrap, jQuery and React.</p>
+              <p className="hideme">Framework : Bootstrap, jQuery and React JS.</p>
             </footer>
           </>
         );
