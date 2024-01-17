@@ -36,6 +36,16 @@ a {
   margin-right: 7px;
 }
 
+#profil {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+#generalskills, #programmingskills {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 .path-0 {
   animation: pathAnim-0 4s;
   animation-timing-function: linear;
