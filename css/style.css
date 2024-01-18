@@ -64,13 +64,17 @@ a {
 .accordion-button:focus {
   box-shadow: 0 0 0 0.25rem rgba(153, 0, 0, 0.53);
 }
+.rp_iframe {
+  border: 0;
+  width: 100%;
+}
 
 /* kontak */
-#fb, #wa, #ig {
+#fb, #wa, #ig, #git, #ln, #yt  {
   transition: transform 0.2s;
   transition-timing-function: ease-in-out;
 }
-#fb:hover, #wa:hover {
+#fb:hover, #wa:hover, #ig:hover, #git:hover, #ln:hover, #yt:hover {
   transform: scale(1.05);
 }
 #fb {

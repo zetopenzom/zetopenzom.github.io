@@ -34,6 +34,21 @@
     <div id="app"></div>
 
     <script type="text/babel">
+      /* navigasi dan beranda */
+      function Menu(props) {
+        const { name, icon, href } = props;
+
+        return (
+          <li className="nav-item">
+            <a
+              className="nav-link active"
+              aria-current="page"
+              href={"#" + href}>
+              <i className={"bi bi-" + icon}></i> {name}
+            </a>
+          </li>
+        );
+      }
       function NavBer() {
         let d = new Date().getFullYear();
         d = d - 1995;
@@ -61,35 +76,26 @@
                   className="collapse navbar-collapse"
                   id="navbarNav">
                   <ul className="navbar-nav ms-auto">
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        aria-current="page"
-                        href="#home">
-                        <i className="bi bi-house"></i> Beranda
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        href="#about">
-                        <i className="bi bi-person"></i> Tentang Saya
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        href="#projects">
-                        <i className="bi bi-briefcase"></i> Riwayat Pekerjaan
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        href="#contact">
-                        <i className="bi bi-phone"></i> Kontak
-                      </a>
-                    </li>
+                    <Menu
+                      name="Beranda"
+                      icon="house"
+                      href="home"
+                    />
+                    <Menu
+                      name="Tentang Saya"
+                      icon="person"
+                      href="about"
+                    />
+                    <Menu
+                      name="Riwayat Pekerjaan"
+                      icon="briefcase"
+                      href="projects"
+                    />
+                    <Menu
+                      name="Kontak"
+                      icon="phone"
+                      href="contact"
+                    />
                   </ul>
                 </div>
               </div>
@@ -126,6 +132,64 @@
         );
       }
 
+      /* tentang saya */
+      function CarIndBtn(props) {
+        const { to, slide } = props;
+        let clas = "";
+        if (to == 0) {
+          clas = "active";
+        }
+
+        return (
+          <button
+            className={"" + clas + ""}
+            type="button"
+            data-bs-target="#carouselTentangSaya"
+            data-bs-slide-to={"" + to + ""}
+            aria-label={"Slide " + slide}></button>
+        );
+      }
+      function Carousel(props) {
+        const { children, title, id, icon } = props;
+        let clas,
+          content = "";
+        if (id == "profil") {
+          clas = "active";
+        }
+
+        return (
+          <div
+            className={"carousel-item " + clas}
+            data-bs-interval="15000">
+            <div
+              className="card"
+              id={"" + id + ""}>
+              <div className="card-body text-center">
+                <h4 className="card-title text-center hideme">
+                  <i className={"bi-" + icon}></i> {title}
+                </h4>
+                {children}
+              </div>
+            </div>
+          </div>
+        );
+      }
+      function CarBtn(props) {
+        const { cmd } = props;
+
+        return (
+          <button
+            className={"carousel-control-" + cmd}
+            type="button"
+            data-bs-target="#carouselTentangSaya"
+            data-bs-slide={"" + cmd + ""}>
+            <span
+              className={"carousel-control-" + cmd + "-icon"}
+              aria-hidden="true"></span>
+            <span className="visually-hidden">{cmd}</span>
+          </button>
+        );
+      }
       function TentangSaya() {
         return (
           <>
@@ -167,130 +231,81 @@
                   data-bs-ride="true">
                   {/* INDICATORS */}
                   <div className="carousel-indicators">
-                    <button
-                      type="button"
-                      data-bs-target="#carouselTentangSaya"
-                      data-bs-slide-to="0"
-                      className="active"
-                      aria-current="true"
-                      aria-label="Slide 1"></button>
-                    <button
-                      type="button"
-                      data-bs-target="#carouselTentangSaya"
-                      data-bs-slide-to="1"
-                      aria-label="Slide 2"></button>
-                    <button
-                      type="button"
-                      data-bs-target="#carouselTentangSaya"
-                      data-bs-slide-to="2"
-                      aria-label="Slide 3"></button>
+                    <CarIndBtn
+                      to="0"
+                      slide="1"
+                    />
+                    <CarIndBtn
+                      to="1"
+                      slide="2"
+                    />
+                    <CarIndBtn
+                      to="2"
+                      slide="3"
+                    />
                   </div>
                   {/* CAROUSEL CONTENT */}
                   <div className="carousel-inner">
                     {/* PROFIL */}
-                    <div
-                      className="carousel-item active"
-                      data-bs-interval="15000">
-                      <div
-                        className="card"
-                        id="profil">
-                        <div className="card-body">
-                          <h4 className="card-title text-center hideme">
-                            <i className="bi-person-fill"></i> Profil
-                          </h4>
-                          <h6 className="card-subtitle text-body-secondary text-center hideme">
-                            Ketahui profil saya secara singkat
-                          </h6>
-                          <div className="d-flex h-75 align-items-center">
-                            <p
-                              className="card-text py-3 text-justify hideme"
-                              id="profiltext">
-                              Saya adalah Sarjana Komputer yang memiliki keahlian di bidang Komputer/IT, khususnya
-                              bidang Web Programming. Saya telah berpengalaman kerja 3 tahun lebih di bidang F&B,
-                              Asuransi, Retail, IT Startup dan Konstruksi. Saya adalah pribadi yang jujur,
-                              berintegritas, disiplin, dan gigih dalam menekuni pekerjaan.
-                            </p>
-                          </div>
-                        </div>
+                    <Carousel
+                      title="Profil"
+                      id="profil"
+                      icon="person-fill">
+                      <h6 className="card-subtitle text-body-secondary text-center hideme">
+                        Ketahui profil saya secara singkat
+                      </h6>
+                      <div className="d-flex h-75 align-items-center">
+                        <p
+                          className="card-text py-3 text-justify hideme"
+                          id="profiltext">
+                          Saya adalah Sarjana Komputer yang memiliki keahlian di bidang Komputer/IT, khususnya bidang
+                          Web Programming. Saya telah berpengalaman kerja 3 tahun lebih di bidang F&B, Asuransi, Retail,
+                          IT Startup dan Konstruksi. Saya adalah pribadi yang jujur, berintegritas, disiplin, dan gigih
+                          dalam menekuni pekerjaan.
+                        </p>
                       </div>
-                    </div>
-                    {/* KEAHLIAN UMUM */}
-                    <div
-                      className="carousel-item"
-                      data-bs-interval="15000">
-                      <div
-                        className="card"
-                        id="generalskills">
-                        <div className="card-body text-center">
-                          <h4 className="card-title">
-                            <i className="bi-info-circle-fill"></i> Keahlian Umum
-                          </h4>
-                          <h6 className="card-subtitle text-body-secondary">Kemampuan yang dikuasai secara umum</h6>
-                          <p
-                            className="d-flex h-75 align-items-center justify-content-center card-text py-3"
-                            id="umumtext">
-                            IT & Web Programming
-                            <br />
-                            Microsoft Office
-                            <br />
-                            Manajemen Google Docs
-                            <br />
-                            Bahasa Inggris
-                            <br />
-                            Administrasi
-                            <br />
+                    </Carousel>
+                    <Carousel
+                      title="Keahlian Umum"
+                      id="generalskills"
+                      icon="info-circle-fill">
+                      <h6 className="card-subtitle text-body-secondary">Kemampuan yang dikuasai secara umum</h6>
+                      <p
+                        className="d-flex h-75 align-items-center justify-content-center card-text py-3"
+                        id="umumtext">
+                        IT & Web Programming
+                        <br />
+                        Microsoft Office
+                        <br />
+                        Manajemen Google Docs
+                        <br />
+                        Bahasa Inggris
+                        <br />
+                        Administrasi
+                        <br />
+                      </p>
+                    </Carousel>
+                    <Carousel
+                      title="Keahlian Programming"
+                      id="programmingskills"
+                      icon="cpu-fill">
+                      <div className="d-flex h-75 align-items-center justify-content-center card-text py-3">
+                        <div>
+                          <h6 className="card-subtitle text-body-secondary">Bahasa</h6>
+                          <p className="programmingtext">HTML, CSS, Javascript, PHP, Python</p>
+                          <h6 className="card-subtitle text-body-secondary">Framework</h6>
+                          <p className="programmingtext">
+                            Bootstrap, jQuery, React JS, React Native, CodeIgniter, Laravel
                           </p>
+                          <h6 className="card-subtitle text-body-secondary">Database</h6>
+                          <p className="programmingtext">SQL, No-SQL</p>
                         </div>
                       </div>
-                    </div>
-                    {/* KEAHLIAN PROGRAMMING */}
-                    <div
-                      className="carousel-item"
-                      data-bs-interval="15000">
-                      <div
-                        className="card"
-                        id="programmingskills">
-                        <div className="card-body text-center">
-                          <h4 className="card-title mb-4">
-                            <i className="bi-cpu-fill"></i> Keahlian Programming
-                          </h4>
-                          <div className="d-flex h-75 align-items-center justify-content-center card-text py-3">
-                            <div>
-                              <h6 className="card-subtitle text-body-secondary">Bahasa</h6>
-                              <p className="programmingtext">HTML, CSS, Javascript, PHP, Python</p>
-                              <h6 className="card-subtitle text-body-secondary">Framework</h6>
-                              <p className="programmingtext">
-                                Bootstrap, jQuery, React JS, React Native, CodeIgniter, Laravel
-                              </p>
-                              <h6 className="card-subtitle text-body-secondary">Database</h6>
-                              <p className="programmingtext">SQL, No-SQL</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    </Carousel>
                   </div>
                   {/* CAROUSEL BUTTON */}
-                  <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselTentangSaya"
-                    data-bs-slide="prev">
-                    <span
-                      className="carousel-control-prev-icon"
-                      aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                  </button>
-                  <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselTentangSaya"
-                    data-bs-slide="next">
-                    <span
-                      className="carousel-control-next-icon"
-                      aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                  </button>
+                  <CarBtn cmd="next" />
+                  <CarBtn cmd="prev" />
                 </div>
 
                 {/* RIWAYAT PENDIDIKAN */}
@@ -413,6 +428,83 @@
         );
       }
 
+      /* riwayat pekerjaan */
+      function Accord(props) {
+        const { children, id, title, img, city, pos, time, iframe } = props;
+        let hideme,
+          show = "";
+        let coll = "collapsed";
+        let exp = "false";
+
+        if (id == "collapseOne") {
+          hideme = "hideme";
+          show = "show";
+          coll = "";
+          exp = "true";
+        }
+
+        return (
+          <div className="accordion-item">
+            <h2 className="accordion-header">
+              <button
+                className={"accordion-button " + coll + " " + hideme}
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target={"#" + id}
+                aria-expanded={exp}
+                aria-controls={id}>
+                {title}
+              </button>
+            </h2>
+            <div
+              id={id}
+              className={"accordion-collapse collapse " + show}>
+              <div className="accordion-body">
+                <div className="row">
+                  <div className="col-lg-2">
+                    <div className="d-flex h-100 align-items-center">
+                      <img
+                        src={"img/" + img + ".png"}
+                        className={"w-100 " + hideme}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-lg-3 text-start mb-3">
+                    <div className="d-flex h-100 flex-column justify-content-center">
+                      <div className="hideme">
+                        <i className="bi-globe-asia-australia"></i> {city}
+                      </div>
+                      <div className="hideme">
+                        <i className="bi-person-workspace"></i> {pos}
+                      </div>
+                      <div className="hideme">
+                        <i className="bi-calendar2-week-fill"></i> {time}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-7 text-start">
+                    <div className="d-flex h-100 align-items-center">
+                      <ul>{children}</ul>
+                    </div>
+                  </div>
+                </div>
+                <iframe
+                  src={"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!" + iframe}
+                  height="200"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rp_iframe hideme"></iframe>
+              </div>
+            </div>
+          </div>
+        );
+      }
+      function RpContent(props) {
+        const { content } = props;
+
+        return <li className="hideme fs-6">{content}</li>;
+      }
       function RiwayatPekerjaan() {
         return (
           <>
@@ -450,262 +542,64 @@
                     <div
                       className="accordion"
                       id="accordionExample">
-                      {/* RDMP JO */}
-                      <div className="accordion-item">
-                        <h2 className="accordion-header">
-                          <button
-                            className="accordion-button hideme"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne"
-                            aria-expanded="true"
-                            aria-controls="collapseOne">
-                            RDMP Balikpapan JO
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseOne"
-                          className="accordion-collapse collapse show">
-                          <div className="accordion-body">
-                            <div className="row">
-                              <div className="col-lg-2">
-                                <div className="d-flex h-100 align-items-center">
-                                  <img
-                                    src="img/rdmp.png"
-                                    className="hideme"
-                                    style={{ width: "100%" }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-lg-3 text-start">
-                                <div className="d-flex h-100 flex-column justify-content-center">
-                                  <div className="hideme">
-                                    <i className="bi-globe-asia-australia"></i> Balikpapan
-                                  </div>
-                                  <div className="hideme">
-                                    <i className="bi-person-workspace"></i> Project Information Staff
-                                  </div>
-                                  <div className="hideme">
-                                    <i className="bi-calendar2-week-fill"></i> Agustus 2022 - Sekarang
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-lg-7 text-start">
-                                <div className="d-flex h-100 align-items-center">
-                                  <ul>
-                                    <li className="hideme">
-                                      Mengelola laporan data riwayat keluar masuk gate kilang berbasis web server
-                                    </li>
-                                    <li className="hideme">
-                                      Administrasi peminjaman Smart Construction Devices (Tablet PC & Smart Glasses)
-                                    </li>
-                                    <li className="hideme">
-                                      Mengembangkan dan memodifikasi aplikasi web yang sudah ada, sesuai kebutuhan
-                                      pengguna
-                                    </li>
-                                    <li className="hideme">Manajemen Google Docs</li>
-                                    <li className="hideme">
-                                      Full Stack Web Developer menggunakan : HTML, CSS, Javascript, PHP, Bootstrap,
-                                      jQuery, React JS, CodeIgniter
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <iframe
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3227.5204016433245!2d116.82746873806776!3d-1.246214186669645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df14708958cd9a7%3A0x742985cfc8dbb33a!2sKantor%20RDMP%20Balikpapan!5e0!3m2!1sid!2sid!4v1705493578194!5m2!1sid!2sid"
-                              height="200"
-                              style={{ border: "0", width: "100%" }}
-                              allowFullScreen=""
-                              loading="lazy"
-                              referrerPolicy="no-referrer-when-downgrade"
-                              className="hideme"></iframe>
-                          </div>
-                        </div>
-                      </div>
-                      {/* SMI */}
-                      <div className="accordion-item hideme">
-                        <h2 className="accordion-header">
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo"
-                            aria-expanded="false"
-                            aria-controls="collapseTwo">
-                            PT. Samudera Mangkupalas Indonesia
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseTwo"
-                          className="accordion-collapse collapse">
-                          <div className="accordion-body">
-                            <div className="row">
-                              <div className="col-lg-2">
-                                <div className="d-flex h-100 align-items-center">
-                                  <img
-                                    src="img/kss.png"
-                                    style={{ width: "100%" }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-lg-3 text-start">
-                                <div className="d-flex h-100 flex-column justify-content-center">
-                                  <div>
-                                    <i className="bi-globe-asia-australia"></i> Samarinda
-                                  </div>
-                                  <div>
-                                    <i className="bi-person-workspace"></i> Junior Software Engineer
-                                  </div>
-                                  <div>
-                                    <i className="bi-calendar2-week-fill"></i> Desember 2021 - Mei 2022
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-lg-7 text-start">
-                                <div className="d-flex h-100 align-items-center">
-                                  <ul>
-                                    <li>Mengembangkan aplikasi berbasis mobile (Android & iOS)</li>
-                                    <li>Membuat rancangan website untuk promosi aplikasi</li>
-                                    <li>
-                                      Menggunakan HTML, CSS, Javascript, Bootstrap, MongoDB, Express JS, React JS, React
-                                      Native, Node JS, Laravel
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <iframe
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6867329784586!2d117.17241767588635!3d-0.4653388995300954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df5d601c9e24e2d%3A0x77ea5253cd2d69f7!2sKss%20Group!5e0!3m2!1sid!2sid!4v1705493846226!5m2!1sid!2sid"
-                              height="200"
-                              style={{ border: "0", width: "100%" }}
-                              allowFullScreen=""
-                              loading="lazy"
-                              referrerPolicy="no-referrer-when-downgrade"></iframe>
-                          </div>
-                        </div>
-                      </div>
-                      {/* JOY */}
-                      <div className="accordion-item hideme">
-                        <h2 className="accordion-header">
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree"
-                            aria-expanded="false"
-                            aria-controls="collapseThree">
-                            PT. Multi Anugerah Lestarindo
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseThree"
-                          className="accordion-collapse collapse">
-                          <div className="accordion-body">
-                            <div className="row">
-                              <div className="col-lg-2">
-                                <div className="d-flex h-100 align-items-center">
-                                  <img
-                                    src="img/joymart.png"
-                                    style={{ width: "100%" }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-lg-3 text-start">
-                                <div className="d-flex h-100 flex-column justify-content-center">
-                                  <div>
-                                    <i className="bi-globe-asia-australia"></i> Samarinda
-                                  </div>
-                                  <div>
-                                    <i className="bi-person-workspace"></i> Staff IT
-                                  </div>
-                                  <div>
-                                    <i className="bi-calendar2-week-fill"></i> Juli 2020 - Oktober 2021
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-lg-7 text-start">
-                                <div className="d-flex h-100 align-items-center">
-                                  <ul>
-                                    <li>Mengurus seluruh urusan IT perusahaan</li>
-                                    <li>Mengelola website versi Localhost & Hosting</li>
-                                    <li>
-                                      Mengembangkan dan memodifikasi aplikasi yang sudah ada, sesuai kebutuhan
-                                      perusahaan
-                                    </li>
-                                    <li>Full Stack Web Developer menggunakan HTML, CSS, Javascript, PHP, jQuery</li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <iframe
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6758028668396!2d117.1623426650495!3d-0.48427987825762675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f5d14ace913%3A0xcd2fd041f9fffcad!2sJoymart!5e0!3m2!1sid!2sid!4v1705493893633!5m2!1sid!2sid"
-                              height="200"
-                              style={{ border: "0", width: "100%" }}
-                              allowFullScreen=""
-                              loading="lazy"
-                              referrerPolicy="no-referrer-when-downgrade"></iframe>
-                          </div>
-                        </div>
-                      </div>
-                      {/* BUMIDA */}
-                      <div className="accordion-item hideme">
-                        <h2 className="accordion-header">
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseFour"
-                            aria-expanded="false"
-                            aria-controls="collapseFour">
-                            PT. Asuransi Umum Bumiputera Muda 1967
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseFour"
-                          className="accordion-collapse collapse">
-                          <div className="accordion-body">
-                            <div className="row">
-                              <div className="col-lg-2">
-                                <div className="d-flex h-100 align-items-center">
-                                  <img
-                                    src="img/bumida.png"
-                                    style={{ width: "100%" }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-lg-3 text-start">
-                                <div className="d-flex h-100 flex-column justify-content-center">
-                                  <div>
-                                    <i className="bi-globe-asia-australia"></i> Samarinda
-                                  </div>
-                                  <div>
-                                    <i className="bi-person-workspace"></i> Staf Administrasi
-                                  </div>
-                                  <div>
-                                    <i className="bi-calendar2-week-fill"></i> Februari 2020 - Mei 2020
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-lg-7 text-start">
-                                <div className="d-flex h-100 align-items-center">
-                                  <ul>
-                                    <li>Entry data nasabah</li>
-                                    <li>Mengatur klausula sesuai tipe asuransi</li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <iframe
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.681443805266!2d117.1376129199856!3d-0.4745989987099329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67fa113c6a105%3A0x1a4e48da028d3706!2sBumida%20Bumiputera!5e0!3m2!1sid!2sid!4v1705494024407!5m2!1sid!2sid"
-                              height="200"
-                              style={{ border: "0", width: "100%" }}
-                              allowFullScreen=""
-                              loading="lazy"
-                              referrerPolicy="no-referrer-when-downgrade"></iframe>
-                          </div>
-                        </div>
-                      </div>
+                      <Accord
+                        id="collapseOne"
+                        title="RDMP Balikpapan JO"
+                        img="rdmp"
+                        city="Balikpapan"
+                        pos="Project Information Staff"
+                        time="Agustus 2022 - Sekarang"
+                        iframe="1d3227.5204016433245!2d116.82746873806776!3d-1.246214186669645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df14708958cd9a7%3A0x742985cfc8dbb33a!2sKantor%20RDMP%20Balikpapan!5e0!3m2!1sid!2sid!4v1705493578194!5m2!1sid!2sid">
+                        <RpContent content="Mengelola laporan data riwayat keluar masuk gate kilang berbasis web server" />
+                        <RpContent content="Administrasi peminjaman Smart Construction Devices (Tablet PC & Smart Glasses)" />
+                        <RpContent content="Mengembangkan dan memodifikasi aplikasi web yang sudah ada, sesuai kebutuhan pengguna" />
+                        <RpContent
+                          content="Full Stack Web Developer menggunakan : HTML, CSS, Javascript, PHP, Bootstrap, jQuery, React
+                          JS, CodeIgniter"
+                        />
+                      </Accord>
+                      <Accord
+                        id="collapseTwo"
+                        title="PT. Samudera Mangkupalas Indonesia"
+                        img="kss"
+                        city="Samarinda"
+                        pos="Junior Software Engineer"
+                        time="Desember 2021 - Mei 2022"
+                        iframe="1d3989.6867329784586!2d117.17241767588635!3d-0.4653388995300954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df5d601c9e24e2d%3A0x77ea5253cd2d69f7!2sKss%20Group!5e0!3m2!1sid!2sid!4v1705493846226!5m2!1sid!2sid">
+                        <RpContent content="Mengembangkan aplikasi berbasis mobile (Android & iOS)" />
+                        <RpContent content="Membuat rancangan website untuk promosi aplikasi" />
+                        <RpContent
+                          content="Menggunakan HTML, CSS, Javascript, Bootstrap, MongoDB, Express JS, React JS, React
+                                      Native, Node JS, Laravel"
+                        />
+                      </Accord>
+                      <Accord
+                        id="collapseThree"
+                        title="PT. Multi Anugerah Lestarindo"
+                        img="joymart"
+                        city="Samarinda"
+                        pos="Staff IT"
+                        time="Juli 2020 - Oktober 2021"
+                        iframe="1d3989.6758028668396!2d117.1623426650495!3d-0.48427987825762675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f5d14ace913%3A0xcd2fd041f9fffcad!2sJoymart!5e0!3m2!1sid!2sid!4v1705493893633!5m2!1sid!2sid">
+                        <RpContent content="Mengurus seluruh urusan IT perusahaan" />
+                        <RpContent content="Mengelola website versi Localhost & Hosting" />
+                        <RpContent
+                          content="Mengembangkan dan memodifikasi aplikasi yang sudah ada, sesuai kebutuhan
+                                      perusahaan"
+                        />
+                        <RpContent content="Full Stack Web Developer menggunakan HTML, CSS, Javascript, PHP, jQuery" />
+                      </Accord>
+                      <Accord
+                        id="collapseFour"
+                        title="PT. Asuransi Umum Bumiputera Muda 1967"
+                        img="bumida"
+                        city="Samarinda"
+                        pos="Staf Administrasi"
+                        time="Februari 2020 - Mei 2020"
+                        iframe="1d3989.681443805266!2d117.1376129199856!3d-0.4745989987099329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67fa113c6a105%3A0x1a4e48da028d3706!2sBumida%20Bumiputera!5e0!3m2!1sid!2sid!4v1705494024407!5m2!1sid!2sid">
+                        <RpContent content="Entry data nasabah" />
+                        <RpContent content="Mengatur klausula sesuai tipe asuransi" />
+                      </Accord>
                     </div>
                   </div>
                 </div>
@@ -715,6 +609,7 @@
         );
       }
 
+      /* kontak */
       function Kontak() {
         return (
           <>
@@ -844,6 +739,7 @@
         );
       }
 
+      /* footer */
       function Footer() {
         return (
           <>
@@ -878,13 +774,15 @@
                   Bayu Ramadhani
                 </a>
               </p>
-              <p className="hideme px-3">This page was built by using HTML, CSS and Javascript</p>
-              <p className="hideme px-3">Framework : Bootstrap, jQuery and React JS</p>
+              <p className="hideme px-3">
+                This page was built by using HTML, CSS, Javascript, Bootstrap, jQuery and React JS
+              </p>
             </footer>
           </>
         );
       }
 
+      /* final app */
       function App() {
         return (
           <>
