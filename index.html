@@ -10,31 +10,25 @@
       content="width=device-width, initial-scale=1.0" />
     <title>Portfolio | Bayu Ramadhani</title>
     <link
-      rel="icon"
-      href="img/bayu.JPG" />
+      href="img/bayu.JPG"
+      rel="icon" />
     <!-- BS5 CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous" />
+      href="bs/bootstrap.min.css"
+      rel="stylesheet" />
     <!-- BS Icons -->
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
-    <!-- My CSS -->
+      href="bs/bootstrap-icons.min.css"
+      rel="stylesheet" />
+    <!-- Custom CSS -->
     <link
-      rel="stylesheet"
-      href="style.css" />
+      href="css/style.css"
+      rel="stylesheet" />
     <!-- React JS -->
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="react/react.production.min.js"></script>
+    <script src="react/react-dom.production.min.js"></script>
     <!-- Babel -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="react/babel.min.js"></script>
   </head>
   <body id="home">
     <div id="app"></div>
@@ -122,7 +116,7 @@
                 id="tagline">
                 Web Programmer Enthusiast
               </p>
-              <div class="px-5">
+              <div className="px-5">
                 Umur {d} tahun
                 <br />
                 Asal Tenggarong, Kutai Kartanegara, Kalimantan Timur, Indonesia
@@ -172,12 +166,12 @@
                   className="carousel carousel-dark slide mb-5"
                   data-bs-ride="true">
                   {/* INDICATORS */}
-                  <div class="carousel-indicators">
+                  <div className="carousel-indicators">
                     <button
                       type="button"
                       data-bs-target="#carouselTentangSaya"
                       data-bs-slide-to="0"
-                      class="active"
+                      className="active"
                       aria-current="true"
                       aria-label="Slide 1"></button>
                     <button
@@ -207,7 +201,7 @@
                           <h6 className="card-subtitle text-body-secondary text-center hideme">
                             Ketahui profil saya secara singkat
                           </h6>
-                          <div class="d-flex h-75 align-items-center">
+                          <div className="d-flex h-75 align-items-center">
                             <p
                               className="card-text py-3 text-justify hideme"
                               id="profiltext">
@@ -446,7 +440,7 @@
             </svg>
             <section
               id="projects"
-              class="bg-light-red">
+              className="bg-light-red">
               <div className="container">
                 <div className="row justify-content-center fs-5 text-center my-3">
                   <div className="col-md-12">
@@ -522,9 +516,10 @@
                               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3227.5204016433245!2d116.82746873806776!3d-1.246214186669645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df14708958cd9a7%3A0x742985cfc8dbb33a!2sKantor%20RDMP%20Balikpapan!5e0!3m2!1sid!2sid!4v1705493578194!5m2!1sid!2sid"
                               height="200"
                               style={{ border: "0", width: "100%" }}
-                              allowfullscreen=""
+                              allowFullScreen=""
                               loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade"></iframe>
+                              referrerPolicy="no-referrer-when-downgrade"
+                              className="hideme"></iframe>
                           </div>
                         </div>
                       </div>
@@ -584,9 +579,9 @@
                               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6867329784586!2d117.17241767588635!3d-0.4653388995300954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df5d601c9e24e2d%3A0x77ea5253cd2d69f7!2sKss%20Group!5e0!3m2!1sid!2sid!4v1705493846226!5m2!1sid!2sid"
                               height="200"
                               style={{ border: "0", width: "100%" }}
-                              allowfullscreen=""
+                              allowFullScreen=""
                               loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade"></iframe>
+                              referrerPolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -647,9 +642,9 @@
                               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6758028668396!2d117.1623426650495!3d-0.48427987825762675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f5d14ace913%3A0xcd2fd041f9fffcad!2sJoymart!5e0!3m2!1sid!2sid!4v1705493893633!5m2!1sid!2sid"
                               height="200"
                               style={{ border: "0", width: "100%" }}
-                              allowfullscreen=""
+                              allowFullScreen=""
                               loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade"></iframe>
+                              referrerPolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -705,9 +700,9 @@
                               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.681443805266!2d117.1376129199856!3d-0.4745989987099329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67fa113c6a105%3A0x1a4e48da028d3706!2sBumida%20Bumiputera!5e0!3m2!1sid!2sid!4v1705494024407!5m2!1sid!2sid"
                               height="200"
                               style={{ border: "0", width: "100%" }}
-                              allowfullscreen=""
+                              allowFullScreen=""
                               loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade"></iframe>
+                              referrerPolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -758,91 +753,79 @@
                 {/*} FIRST ROW */}
                 <div className="row justify-content-center text-center">
                   <div className="col-md-3">
-                    <h5
-                      className="p-3 m-2 text-light rounded hideme"
-                      id="fb">
-                      <i className="bi-facebook"></i>
-                      <a
-                        href="https://facebook.com/zetopenzom"
-                        className="text-decoration-none text-light"
-                        target="_blank">
-                        {" "}
-                        Zeto Penzom
-                      </a>
-                    </h5>
+                    <a
+                      href="https://facebook.com/zetopenzom"
+                      className="text-decoration-none text-light"
+                      target="_blank">
+                      <h5
+                        className="p-3 m-2 text-light rounded hideme"
+                        id="fb">
+                        <i className="bi-facebook"></i> Zeto Penzom
+                      </h5>
+                    </a>
                   </div>
                   <div className="col-md-3">
-                    <h5
-                      className="p-3 m-2 text-light rounded hideme"
-                      id="wa">
-                      <i className="bi-whatsapp"></i>
-                      <a
-                        href="https://wa.me/6285845750937"
-                        className="text-decoration-none text-light"
-                        target="_blank">
-                        {" "}
-                        +62 858-4575-0937
-                      </a>
-                    </h5>
+                    <a
+                      href="https://wa.me/6285845750937"
+                      className="text-decoration-none text-light"
+                      target="_blank">
+                      <h5
+                        className="p-3 m-2 text-light rounded hideme"
+                        id="wa">
+                        <i className="bi-whatsapp"></i> +62 858-4575-0937
+                      </h5>
+                    </a>
                   </div>
                   <div className="col-md-3">
-                    <h5
-                      className="p-3 m-2 text-light rounded hideme"
-                      id="ig">
-                      <i className="bi-instagram"></i>
-                      <a
-                        href="https://www.instagram.com/zetopenzom"
-                        className="text-decoration-none text-light"
-                        target="_blank">
-                        {" "}
-                        zetopenzom
-                      </a>
-                    </h5>
+                    <a
+                      href="https://www.instagram.com/zetopenzom"
+                      className="text-decoration-none text-light"
+                      target="_blank">
+                      <h5
+                        className="p-3 m-2 text-light rounded hideme"
+                        id="ig">
+                        <i className="bi-instagram"></i> zetopenzom
+                      </h5>
+                    </a>
                   </div>
                 </div>
                 {/*} SECOND ROW */}
                 <div className="row justify-content-center text-center hideme">
                   <div className="col-md-3">
-                    <h5
-                      className="p-3 m-2 text-light rounded hideme"
-                      id="git">
-                      <i className="bi-github"></i>
-                      <a
-                        href="https://github.com/zetopenzom"
-                        className="text-decoration-none text-light"
-                        target="_blank">
-                        {" "}
-                        zetopenzom
-                      </a>
-                    </h5>
+                    <a
+                      href="https://github.com/zetopenzom"
+                      className="text-decoration-none text-light"
+                      target="_blank">
+                      <h5
+                        className="p-3 m-2 text-light rounded hideme"
+                        id="git">
+                        <i className="bi-github"></i> zetopenzom
+                      </h5>
+                    </a>
                   </div>
                   <div className="col-md-3">
-                    <h5
-                      className="p-3 m-2 text-light rounded hideme"
-                      id="ln">
-                      <i className="bi-linkedin"></i>
-                      <a
-                        href="https://www.linkedin.com/in/zetopenzom/"
-                        className="text-decoration-none text-light"
-                        target="_blank">
-                        {" "}
-                        Bayu Ramadhani
-                      </a>
-                    </h5>
+                    <a
+                      href="https://www.linkedin.com/in/zetopenzom/"
+                      className="text-decoration-none text-light"
+                      target="_blank">
+                      <h5
+                        className="p-3 m-2 text-light rounded hideme"
+                        id="ln">
+                        <i className="bi-linkedin"></i> Bayu Ramadhani
+                      </h5>
+                    </a>
                   </div>
                   <div className="col-md-3">
-                    <h5
-                      className="p-3 m-2 text-light rounded hideme"
-                      id="yt">
-                      <i className="bi-youtube"></i>
-                      <a
-                        href="https://www.youtube.com/channel/UCeuw2XPPwLRNPgI8ttBzZhg"
-                        className="text-decoration-none text-light"
-                        target="_blank">
-                        {" "}
-                        Zeto Penzom
-                      </a>
-                    </h5>
+                    <a
+                      href="https://www.youtube.com/channel/UCeuw2XPPwLRNPgI8ttBzZhg"
+                      className="text-decoration-none text-light"
+                      target="_blank">
+                      <h5
+                        className="p-3 m-2 text-light rounded hideme"
+                        id="yt">
+                        <i className="bi-youtube"></i> Zeto Penzom
+                      </h5>
+                    </a>
                   </div>
                 </div>
                 {/*} THIRD ROW */}
@@ -895,8 +878,8 @@
                   Bayu Ramadhani
                 </a>
               </p>
-              <p className="hideme px-3">This page was built by using HTML, CSS and Javascript.</p>
-              <p className="hideme px-3">Framework : Bootstrap, jQuery and React JS.</p>
+              <p className="hideme px-3">This page was built by using HTML, CSS and Javascript</p>
+              <p className="hideme px-3">Framework : Bootstrap, jQuery and React JS</p>
             </footer>
           </>
         );
@@ -918,32 +901,11 @@
     </script>
 
     <!-- BS5 JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"></script>
+    <script src="bs/popper.min.js"></script>
+    <script src="bs/bootstrap.min.js"></script>
     <!-- jQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.7.0.js"
-      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-      crossorigin="anonymous"></script>
-
+    <script src="jquery/jquery-3.7.1.min.js"></script>
     <!-- Custom Script -->
-    <script>
-      $(document).ready(function () {
-        /* Every time the window is scrolled */
-        $(window).scroll(function () {
-          /* Check the location of each desired element */
-          $(".hideme").each(function (i) {
-            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
-            /* If the object is completely visible in the window, fade it */
-            if (bottom_of_window > bottom_of_object) {
-              $(this).animate({ opacity: "1" }, 1000);
-            }
-          });
-        });
-      });
-    </script>
+    <script src="js/script.js"></script>
   </body>
 </html>
