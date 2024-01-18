@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="in_ID">
   <head>
-    <title>Portfolio | Bayu Ramadhani</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1" />
+      content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Bayu Ramadhani</title>
     <link
       rel="icon"
       href="img/bayu.JPG" />
@@ -97,18 +100,33 @@
                 </div>
               </div>
             </nav>
-            <section className="jumbotron text-center">
+            <section className="jumbotron text-center bg-light-red">
               <img
                 src="img/bayu.JPG"
                 alt="Bayu Ramadhani"
                 width="200"
                 className="rounded-circle img-thumbnail shadow-lg"
               />
-              <h1 className="display-4 fw-bolder">BAYU RAMADHANI, S.Kom.</h1>
-              <h4 className="display-10 fw-bold">Sarjana Komputer</h4>
-              <p className="lead fw-bold fs-3">Web Programmer Enthusiast</p>
-              <div>Umur {d} tahun</div>
-              <div>Asal Tenggarong, Kutai Kartanegara, Kalimantan Timur</div>
+              <h1
+                className="fw-bolder mt-3"
+                id="name">
+                BAYU RAMADHANI, S.Kom.
+              </h1>
+              <h4
+                className="fw-bold"
+                id="skom">
+                Sarjana Komputer
+              </h4>
+              <p
+                className="fw-bold"
+                id="tagline">
+                Web Programmer Enthusiast
+              </p>
+              <div class="px-5">
+                Umur {d} tahun
+                <br />
+                Asal Tenggarong, Kutai Kartanegara, Kalimantan Timur, Indonesia
+              </div>
             </section>
           </>
         );
@@ -153,42 +171,70 @@
                   id="carouselTentangSaya"
                   className="carousel carousel-dark slide mb-5"
                   data-bs-ride="true">
+                  {/* INDICATORS */}
+                  <div class="carousel-indicators">
+                    <button
+                      type="button"
+                      data-bs-target="#carouselTentangSaya"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="Slide 1"></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselTentangSaya"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselTentangSaya"
+                      data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
+                  </div>
                   {/* CAROUSEL CONTENT */}
                   <div className="carousel-inner">
                     {/* PROFIL */}
-                    <div className="carousel-item active">
+                    <div
+                      className="carousel-item active"
+                      data-bs-interval="15000">
                       <div
                         className="card"
                         id="profil">
                         <div className="card-body">
-                          <h3 className="card-title text-center hideme">
+                          <h4 className="card-title text-center hideme">
                             <i className="bi-person-fill"></i> Profil
-                          </h3>
-                          <h6 className="card-subtitle mb-4 text-body-secondary text-center hideme">
+                          </h4>
+                          <h6 className="card-subtitle text-body-secondary text-center hideme">
                             Ketahui profil saya secara singkat
                           </h6>
-                          <p className="card-text py-5 hideme">
-                            Saya adalah Sarjana Komputer yang memiliki keahlian di bidang Komputer/IT, khususnya bidang
-                            Web Programming. Saya telah berpengalaman kerja 3 tahun lebih di bidang F&B, Asuransi,
-                            Retail, IT Startup dan Konstruksi. Saya adalah pribadi yang jujur, berintegritas, disiplin,
-                            dan gigih dalam menekuni pekerjaan.
-                          </p>
+                          <div class="d-flex h-75 align-items-center">
+                            <p
+                              className="card-text py-3 text-justify hideme"
+                              id="profiltext">
+                              Saya adalah Sarjana Komputer yang memiliki keahlian di bidang Komputer/IT, khususnya
+                              bidang Web Programming. Saya telah berpengalaman kerja 3 tahun lebih di bidang F&B,
+                              Asuransi, Retail, IT Startup dan Konstruksi. Saya adalah pribadi yang jujur,
+                              berintegritas, disiplin, dan gigih dalam menekuni pekerjaan.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                     {/* KEAHLIAN UMUM */}
-                    <div className="carousel-item">
+                    <div
+                      className="carousel-item"
+                      data-bs-interval="15000">
                       <div
                         className="card"
                         id="generalskills">
                         <div className="card-body text-center">
-                          <h3 className="card-title">
+                          <h4 className="card-title">
                             <i className="bi-info-circle-fill"></i> Keahlian Umum
-                          </h3>
-                          <h6 className="card-subtitle mb-2 text-body-secondary pb-3">
-                            Kemampuan yang dikuasai secara umum
-                          </h6>
-                          <p className="mt-3 mb-5">
+                          </h4>
+                          <h6 className="card-subtitle text-body-secondary">Kemampuan yang dikuasai secara umum</h6>
+                          <p
+                            className="d-flex h-75 align-items-center justify-content-center card-text py-3"
+                            id="umumtext">
                             IT & Web Programming
                             <br />
                             Microsoft Office
@@ -204,20 +250,28 @@
                       </div>
                     </div>
                     {/* KEAHLIAN PROGRAMMING */}
-                    <div className="carousel-item">
+                    <div
+                      className="carousel-item"
+                      data-bs-interval="15000">
                       <div
                         className="card"
                         id="programmingskills">
-                        <div className="card-body text-center mb-2">
-                          <h3 className="card-title pb-3">
+                        <div className="card-body text-center">
+                          <h4 className="card-title mb-4">
                             <i className="bi-cpu-fill"></i> Keahlian Programming
-                          </h3>
-                          <h6 className="card-subtitle mb-2 text-body-secondary">Bahasa</h6>
-                          <p>HTML, CSS, Javascript, PHP, Python</p>
-                          <h6 className="card-subtitle mb-2 text-body-secondary">Framework</h6>
-                          <p>Bootstrap, jQuery, React.js, React Native, CodeIgniter, Laravel</p>
-                          <h6 className="card-subtitle mb-2 text-body-secondary">Database</h6>
-                          <p>SQL, No-SQL</p>
+                          </h4>
+                          <div className="d-flex h-75 align-items-center justify-content-center card-text py-3">
+                            <div>
+                              <h6 className="card-subtitle text-body-secondary">Bahasa</h6>
+                              <p className="programmingtext">HTML, CSS, Javascript, PHP, Python</p>
+                              <h6 className="card-subtitle text-body-secondary">Framework</h6>
+                              <p className="programmingtext">
+                                Bootstrap, jQuery, React JS, React Native, CodeIgniter, Laravel
+                              </p>
+                              <h6 className="card-subtitle text-body-secondary">Database</h6>
+                              <p className="programmingtext">SQL, No-SQL</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -303,7 +357,8 @@
                       <div className="card-body">
                         <a
                           href="https://sman1-tenggarong.sch.id/"
-                          className="card-link hideme">
+                          className="card-link hideme"
+                          target="_blank">
                           Website
                         </a>
                         <a
@@ -389,7 +444,9 @@
                 fillOpacity="1"
                 className="transition-all duration-300 ease-in-out delay-150 path-3"></path>
             </svg>
-            <section id="projects">
+            <section
+              id="projects"
+              class="bg-light-red">
               <div className="container">
                 <div className="row justify-content-center fs-5 text-center my-3">
                   <div className="col-md-12">
@@ -461,6 +518,13 @@
                                 </div>
                               </div>
                             </div>
+                            <iframe
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3227.5204016433245!2d116.82746873806776!3d-1.246214186669645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df14708958cd9a7%3A0x742985cfc8dbb33a!2sKantor%20RDMP%20Balikpapan!5e0!3m2!1sid!2sid!4v1705493578194!5m2!1sid!2sid"
+                              height="200"
+                              style={{ border: "0", width: "100%" }}
+                              allowfullscreen=""
+                              loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -516,6 +580,13 @@
                                 </div>
                               </div>
                             </div>
+                            <iframe
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6867329784586!2d117.17241767588635!3d-0.4653388995300954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df5d601c9e24e2d%3A0x77ea5253cd2d69f7!2sKss%20Group!5e0!3m2!1sid!2sid!4v1705493846226!5m2!1sid!2sid"
+                              height="200"
+                              style={{ border: "0", width: "100%" }}
+                              allowfullscreen=""
+                              loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -536,44 +607,49 @@
                           id="collapseThree"
                           className="accordion-collapse collapse">
                           <div className="accordion-body">
-                            <div className="accordion-body">
-                              <div className="row">
-                                <div className="col-lg-2">
-                                  <div className="d-flex h-100 align-items-center">
-                                    <img
-                                      src="img/joymart.png"
-                                      style={{ width: "100%" }}
-                                    />
-                                  </div>
+                            <div className="row">
+                              <div className="col-lg-2">
+                                <div className="d-flex h-100 align-items-center">
+                                  <img
+                                    src="img/joymart.png"
+                                    style={{ width: "100%" }}
+                                  />
                                 </div>
-                                <div className="col-lg-3 text-start">
-                                  <div className="d-flex h-100 flex-column justify-content-center">
-                                    <div>
-                                      <i className="bi-globe-asia-australia"></i> Samarinda
-                                    </div>
-                                    <div>
-                                      <i className="bi-person-workspace"></i> Staff IT
-                                    </div>
-                                    <div>
-                                      <i className="bi-calendar2-week-fill"></i> Juli 2020 - Oktober 2021
-                                    </div>
+                              </div>
+                              <div className="col-lg-3 text-start">
+                                <div className="d-flex h-100 flex-column justify-content-center">
+                                  <div>
+                                    <i className="bi-globe-asia-australia"></i> Samarinda
                                   </div>
-                                </div>
-                                <div className="col-lg-7 text-start">
-                                  <div className="d-flex h-100 align-items-center">
-                                    <ul>
-                                      <li>Mengurus seluruh urusan IT perusahaan</li>
-                                      <li>Mengelola website versi Localhost & Hosting</li>
-                                      <li>
-                                        Mengembangkan dan memodifikasi aplikasi yang sudah ada, sesuai kebutuhan
-                                        perusahaan
-                                      </li>
-                                      <li>Full Stack Web Developer menggunakan HTML, CSS, Javascript, PHP, jQuery</li>
-                                    </ul>
+                                  <div>
+                                    <i className="bi-person-workspace"></i> Staff IT
+                                  </div>
+                                  <div>
+                                    <i className="bi-calendar2-week-fill"></i> Juli 2020 - Oktober 2021
                                   </div>
                                 </div>
                               </div>
+                              <div className="col-lg-7 text-start">
+                                <div className="d-flex h-100 align-items-center">
+                                  <ul>
+                                    <li>Mengurus seluruh urusan IT perusahaan</li>
+                                    <li>Mengelola website versi Localhost & Hosting</li>
+                                    <li>
+                                      Mengembangkan dan memodifikasi aplikasi yang sudah ada, sesuai kebutuhan
+                                      perusahaan
+                                    </li>
+                                    <li>Full Stack Web Developer menggunakan HTML, CSS, Javascript, PHP, jQuery</li>
+                                  </ul>
+                                </div>
+                              </div>
                             </div>
+                            <iframe
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6758028668396!2d117.1623426650495!3d-0.48427987825762675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f5d14ace913%3A0xcd2fd041f9fffcad!2sJoymart!5e0!3m2!1sid!2sid!4v1705493893633!5m2!1sid!2sid"
+                              height="200"
+                              style={{ border: "0", width: "100%" }}
+                              allowfullscreen=""
+                              loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -594,39 +670,44 @@
                           id="collapseFour"
                           className="accordion-collapse collapse">
                           <div className="accordion-body">
-                            <div className="accordion-body">
-                              <div className="row">
-                                <div className="col-lg-2">
-                                  <div className="d-flex h-100 align-items-center">
-                                    <img
-                                      src="img/bumida.png"
-                                      style={{ width: "100%" }}
-                                    />
-                                  </div>
+                            <div className="row">
+                              <div className="col-lg-2">
+                                <div className="d-flex h-100 align-items-center">
+                                  <img
+                                    src="img/bumida.png"
+                                    style={{ width: "100%" }}
+                                  />
                                 </div>
-                                <div className="col-lg-3 text-start">
-                                  <div className="d-flex h-100 flex-column justify-content-center">
-                                    <div>
-                                      <i className="bi-globe-asia-australia"></i> Samarinda
-                                    </div>
-                                    <div>
-                                      <i className="bi-person-workspace"></i> Staf Administrasi
-                                    </div>
-                                    <div>
-                                      <i className="bi-calendar2-week-fill"></i> Februari 2020 - Mei 2020
-                                    </div>
+                              </div>
+                              <div className="col-lg-3 text-start">
+                                <div className="d-flex h-100 flex-column justify-content-center">
+                                  <div>
+                                    <i className="bi-globe-asia-australia"></i> Samarinda
                                   </div>
-                                </div>
-                                <div className="col-lg-7 text-start">
-                                  <div className="d-flex h-100 align-items-center">
-                                    <ul>
-                                      <li>Entry data nasabah</li>
-                                      <li>Mengatur klausula sesuai tipe asuransi</li>
-                                    </ul>
+                                  <div>
+                                    <i className="bi-person-workspace"></i> Staf Administrasi
+                                  </div>
+                                  <div>
+                                    <i className="bi-calendar2-week-fill"></i> Februari 2020 - Mei 2020
                                   </div>
                                 </div>
                               </div>
+                              <div className="col-lg-7 text-start">
+                                <div className="d-flex h-100 align-items-center">
+                                  <ul>
+                                    <li>Entry data nasabah</li>
+                                    <li>Mengatur klausula sesuai tipe asuransi</li>
+                                  </ul>
+                                </div>
+                              </div>
                             </div>
+                            <iframe
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.681443805266!2d117.1376129199856!3d-0.4745989987099329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67fa113c6a105%3A0x1a4e48da028d3706!2sBumida%20Bumiputera!5e0!3m2!1sid!2sid!4v1705494024407!5m2!1sid!2sid"
+                              height="200"
+                              style={{ border: "0", width: "100%" }}
+                              allowfullscreen=""
+                              loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"></iframe>
                           </div>
                         </div>
                       </div>
@@ -794,14 +875,14 @@
                 d="M 0,400 L 0,100 C 85.63636363636365,105.60765550239233 171.2727272727273,111.21531100478468 276,106 C 380.7272727272727,100.78468899521532 504.5454545454546,84.74641148325358 601,73 C 697.4545454545454,61.25358851674641 766.5454545454546,53.799043062200965 853,61 C 939.4545454545454,68.20095693779903 1043.2727272727273,90.05741626794259 1144,99 C 1244.7272727272727,107.94258373205741 1342.3636363636365,103.97129186602871 1440,100 L 1440,400 L 0,400 Z"
                 stroke="none"
                 strokeWidth="0"
-                fill="#ff1a1a"
+                fill="#990000"
                 fillOpacity="0.53"
                 className="transition-all duration-300 ease-in-out delay-150 path-4"></path>
               <path
                 d="M 0,400 L 0,233 C 80.40191387559807,234.6937799043062 160.80382775119614,236.38755980861242 262,227 C 363.19617224880386,217.61244019138758 485.18660287081343,197.14354066985646 573,190 C 660.8133971291866,182.85645933014354 714.4497607655502,189.0382775119617 820,191 C 925.5502392344498,192.9617224880383 1083.0143540669858,190.70334928229667 1195,197 C 1306.9856459330142,203.29665071770333 1373.492822966507,218.14832535885165 1440,233 L 1440,400 L 0,400 Z"
                 stroke="none"
                 strokeWidth="0"
-                fill="#ff1a1a"
+                fill="#990000"
                 fillOpacity="1"
                 className="transition-all duration-300 ease-in-out delay-150 path-5"></path>
             </svg>
@@ -814,8 +895,8 @@
                   Bayu Ramadhani
                 </a>
               </p>
-              <p className="hideme">This page was built by using HTML, CSS and Javascript.</p>
-              <p className="hideme">Framework : Bootstrap, jQuery and React JS.</p>
+              <p className="hideme px-3">This page was built by using HTML, CSS and Javascript.</p>
+              <p className="hideme px-3">Framework : Bootstrap, jQuery and React JS.</p>
             </footer>
           </>
         );

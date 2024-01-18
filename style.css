@@ -1,44 +1,56 @@
-.jumbotron {
-  padding-top: 6rem;
-  background-color: #ffe6e6;
-}
 
-#projects {
-  background-color: #ffe6e6;
-}
-
+/* general */
 section {
   padding-top: 1rem;
 }
-
 .bg-red {
-  background-color: #ff1a1a;
+  background-color: #990000;
 }
-
 .bg-light-red {
   background-color: #ffe6e6;
 }
-
 a {
-  color: #ff1a1a;
+  color: #990000;
 }
-
-.logo-perusahaan {
-  height: 150px;
-}
-
 .hideme {
     opacity:0;
 }
-
-.img_rp {
-  height: 50px;
-  margin-right: 7px;
+.h-80 {
+  height: 75%;
 }
 
+/* beranda */
+.jumbotron {
+  padding-top: 6rem;
+}
+#name {
+  font-size: calc(1rem + 2vw);
+}
+#skom {
+  font-size: calc(1rem + 0.8vw);
+}
+#tagline {
+  font-size: calc(1rem + 0.9vw);
+}
+
+/* tentang saya */
+#carouselTentangSaya, #profil, #generalskills, #programmingskills{
+  height: 350px;
+}
 #profil {
   padding-left: 15%;
   padding-right: 15%;
+}
+.card-subtitle {
+  font-size: calc(0.8rem + 0.1vw);
+}
+#profiltext {
+  font-size: calc(0.8rem + 0.4vw);
+  text-align: justify;
+  text-justify: inter-word;
+}
+#umumtext, .programmingtext {
+  font-size: calc(1rem + 0.5vw);
 }
 
 #generalskills, #programmingskills {
@@ -46,6 +58,7 @@ a {
   padding-right: 10%;
 }
 
+/* kontak */
 #fb {
   background-color: #17A9FD;
 }
@@ -68,6 +81,7 @@ a {
   background-color: #4285F4;
 }
 
+/* waves */
 .path-0 {
   animation: pathAnim-0 4s;
   animation-timing-function: linear;
@@ -139,7 +153,7 @@ a {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-@keyframes pathAnim-0{
+@keyframes pathAnim-2{
   0%{
     d: path("M 0,400 L 0,100 C 202.13333333333333,74.8 404.26666666666665,49.599999999999994 542,57 C 679.7333333333333,64.4 753.0666666666666,104.4 892,117 C 1030.9333333333334,129.6 1235.4666666666667,114.8 1440,100 L 1440,400 L 0,400 Z");
   }
@@ -162,7 +176,7 @@ a {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-@keyframes pathAnim-1{
+@keyframes pathAnim-3{
   0%{
     d: path("M 0,400 L 0,233 C 134.13333333333333,248.73333333333335 268.26666666666665,264.4666666666667 420,260 C 571.7333333333333,255.53333333333333 741.0666666666666,230.86666666666667 914,223 C 1086.9333333333334,215.13333333333333 1263.4666666666667,224.06666666666666 1440,233 L 1440,400 L 0,400 Z");
   }
@@ -185,7 +199,7 @@ a {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-@keyframes pathAnim-0{
+@keyframes pathAnim-4{
   0%{
     d: path("M 0,400 L 0,100 C 85.63636363636365,105.60765550239233 171.2727272727273,111.21531100478468 276,106 C 380.7272727272727,100.78468899521532 504.5454545454546,84.74641148325358 601,73 C 697.4545454545454,61.25358851674641 766.5454545454546,53.799043062200965 853,61 C 939.4545454545454,68.20095693779903 1043.2727272727273,90.05741626794259 1144,99 C 1244.7272727272727,107.94258373205741 1342.3636363636365,103.97129186602871 1440,100 L 1440,400 L 0,400 Z");
   }
@@ -208,7 +222,7 @@ a {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-@keyframes pathAnim-1{
+@keyframes pathAnim-5{
   0%{
     d: path("M 0,400 L 0,233 C 80.40191387559807,234.6937799043062 160.80382775119614,236.38755980861242 262,227 C 363.19617224880386,217.61244019138758 485.18660287081343,197.14354066985646 573,190 C 660.8133971291866,182.85645933014354 714.4497607655502,189.0382775119617 820,191 C 925.5502392344498,192.9617224880383 1083.0143540669858,190.70334928229667 1195,197 C 1306.9856459330142,203.29665071770333 1373.492822966507,218.14832535885165 1440,233 L 1440,400 L 0,400 Z");
   }
