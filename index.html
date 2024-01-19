@@ -34,6 +34,39 @@
     <div id="app"></div>
 
     <script type="text/babel">
+      /* svg */
+      function Svg(props) {
+        const { d1st, d2nd, fill, transform, path1st, path2nd, customStyle } = props;
+
+        return (
+          <svg
+            width="100%"
+            height="100%"
+            id="svg"
+            viewBox="0 0 1440 390"
+            xmlns="http://www.w3.org/2000/svg"
+            className="transition duration-300 ease-in-out delay-150"
+            style={{ marginTop: "" + customStyle + "" }}>
+            <path
+              d={d1st}
+              stroke="none"
+              strokeWidth="0"
+              fill={fill}
+              fillOpacity="0.53"
+              className={"transition-all duration-300 ease-in-out delay-150 path-" + path1st}
+              transform={transform}></path>
+            <path
+              d={d2nd}
+              stroke="none"
+              strokeWidth="0"
+              fill={fill}
+              fillOpacity="1"
+              className={"transition-all duration-300 ease-in-out delay-150 path-" + path2nd}
+              transform={transform}></path>
+          </svg>
+        );
+      }
+
       /* navigasi dan beranda */
       function Menu(props) {
         const { name, icon, href } = props;
@@ -190,40 +223,76 @@
           </button>
         );
       }
+      function RpdContent(props) {
+        const { children, years } = props;
+
+        return (
+          <p className="card-text hideme">
+            {children}
+            {years}
+          </p>
+        );
+      }
+      function Rpd(props) {
+        const { children, col, level, img, width, title, years, web, maps } = props;
+        let website = "";
+        if (web != "") {
+          website = (
+            <a
+              href={web}
+              className="card-link hideme"
+              target="_blank">
+              Website
+            </a>
+          );
+        }
+
+        return (
+          <div className={"col-lg-" + col}>
+            <div className="card w-100 align-items-center py-4">
+              <h4 className="mb-3 hideme">{level}</h4>
+              <img
+                src={"img/" + img + ".png"}
+                className="card-img-top hideme"
+                style={{ width: "" + width + "" }}
+              />
+              <div className="card-body">
+                <h5 className="card-title hideme">{title}</h5>
+                <RpdContent
+                  children={children}
+                  years={years}
+                />
+              </div>
+              <div className="card-body pt-0">
+                {website}
+                <a
+                  href={maps}
+                  className="card-link hideme"
+                  target="_blank">
+                  Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      }
       function TentangSaya() {
         return (
           <>
-            <svg
-              width="100%"
-              height="100%"
-              id="svg"
-              viewBox="0 0 1440 390"
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition duration-300 ease-in-out delay-150">
-              <path
-                d="M 0,400 L 0,100 C 195.86666666666667,105.73333333333333 391.73333333333335,111.46666666666667 542,104 C 692.2666666666667,96.53333333333333 796.9333333333334,75.86666666666666 939,73 C 1081.0666666666666,70.13333333333334 1260.5333333333333,85.06666666666666 1440,100 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#ffe6e6"
-                fillOpacity="0.53"
-                className="transition-all duration-300 ease-in-out delay-150 path-0"
-                transform="rotate(-180 720 200)"></path>
-              <path
-                d="M 0,400 L 0,233 C 198.93333333333334,232.60000000000002 397.8666666666667,232.20000000000002 558,241 C 718.1333333333333,249.79999999999998 839.4666666666667,267.79999999999995 980,268 C 1120.5333333333333,268.20000000000005 1280.2666666666667,250.60000000000002 1440,233 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#ffe6e6"
-                fillOpacity="1"
-                className="transition-all duration-300 ease-in-out delay-150 path-1"
-                transform="rotate(-180 720 200)"></path>
-            </svg>
+            <Svg
+              d1st="M 0,400 L 0,100 C 195.86666666666667,105.73333333333333 391.73333333333335,111.46666666666667 542,104 C 692.2666666666667,96.53333333333333 796.9333333333334,75.86666666666666 939,73 C 1081.0666666666666,70.13333333333334 1260.5333333333333,85.06666666666666 1440,100 L 1440,400 L 0,400 Z"
+              fill="#ffe6e6"
+              d2nd="M 0,400 L 0,233 C 198.93333333333334,232.60000000000002 397.8666666666667,232.20000000000002 558,241 C 718.1333333333333,249.79999999999998 839.4666666666667,267.79999999999995 980,268 C 1120.5333333333333,268.20000000000005 1280.2666666666667,250.60000000000002 1440,233 L 1440,400 L 0,400 Z"
+              path1st="0"
+              path2nd="1"
+              transform="rotate(-180 720 200)"
+            />
             <section id="about">
               <div className="container">
                 {/* JUDUL */}
                 <div className="text-center mb-5 hideme">
                   <h2>TENTANG SAYA</h2>
                 </div>
-
                 {/* CAROUSEL */}
                 <div
                   id="carouselTentangSaya"
@@ -265,6 +334,7 @@
                         </p>
                       </div>
                     </Carousel>
+                    {/* KEAHLIAN UMUM */}
                     <Carousel
                       title="Keahlian Umum"
                       id="generalskills"
@@ -285,12 +355,13 @@
                         <br />
                       </p>
                     </Carousel>
+                    {/* KEAHLIAN PROGRAMMING */}
                     <Carousel
                       title="Keahlian Programming"
                       id="programmingskills"
                       icon="cpu-fill">
                       <div className="d-flex h-75 align-items-center justify-content-center card-text py-3">
-                        <div>
+                        <div className="mt-4">
                           <h6 className="card-subtitle text-body-secondary">Bahasa</h6>
                           <p className="programmingtext">HTML, CSS, Javascript, PHP, Python</p>
                           <h6 className="card-subtitle text-body-secondary">Framework</h6>
@@ -307,120 +378,59 @@
                   <CarBtn cmd="next" />
                   <CarBtn cmd="prev" />
                 </div>
-
                 {/* RIWAYAT PENDIDIKAN */}
                 <div className="row justify-content-center fs-5 text-center">
                   <h3 className="mb-5 hideme">RIWAYAT PENDIDIKAN</h3>
                   {/* UNMUL */}
-                  <div className="col-lg-12">
-                    <div className="card w-100 align-items-center py-4">
-                      <h4 className="mb-3 hideme">Perguruan Tinggi</h4>
-                      <img
-                        src="img/unmul.png"
-                        className="card-img-top hideme"
-                        style={{ width: "150px" }}
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title hideme">Universitas Mulawarman</h5>
-                        <p className="card-text hideme">
-                          Fakultas Ilmu Komputer dan Teknologi Informasi
-                          <br />
-                          Jurusan Ilmu Komputer
-                          <br />
-                          2013 - 2019
-                        </p>
-                      </div>
-                      <div className="card-body">
-                        <a
-                          href="https://unmul.ac.id/"
-                          className="card-link hideme"
-                          target="_blank">
-                          Website
-                        </a>
-                        <a
-                          href="https://maps.app.goo.gl/MR42Em3fwTer7tGr8"
-                          className="card-link hideme"
-                          target="_blank">
-                          Maps
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <Rpd
+                    col="12"
+                    level="Perguruan Tinggi"
+                    img="unmul"
+                    width="180px"
+                    title="Universitas Mulawarman"
+                    years="2013 - 2019"
+                    web="https://unmul.ac.id/"
+                    maps="https://maps.app.goo.gl/MR42Em3fwTer7tGr8">
+                    Fakultas Ilmu Komputer dan Teknologi Informasi
+                    <br />
+                    Jurusan Ilmu Komputer
+                    <br />
+                  </Rpd>
                   {/* SMA */}
-                  <div className="col-lg-4">
-                    <div className="card w-100 align-items-center py-4">
-                      <h5 className="mb-3 hideme">Sekolah Menengah Atas</h5>
-                      <img
-                        src="img/sma1.png"
-                        className="card-img-top hideme"
-                        style={{ width: "100px" }}
-                      />
-                      <div className="card-body">
-                        <h6 className="card-title hideme">SMA Negeri 1 Tenggarong</h6>
-                        <p className="card-text hideme">
-                          Jurusan IPA
-                          <br />
-                          2010 - 2013
-                        </p>
-                      </div>
-                      <div className="card-body">
-                        <a
-                          href="https://sman1-tenggarong.sch.id/"
-                          className="card-link hideme"
-                          target="_blank">
-                          Website
-                        </a>
-                        <a
-                          href="https://maps.app.goo.gl/ATDE7eFWHeDP5hir8"
-                          className="card-link hideme"
-                          target="_blank">
-                          Maps
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <Rpd
+                    col="4"
+                    level="Sekolah Menengah Atas"
+                    img="sma1"
+                    width="70px"
+                    title="SMA Negeri 1 Tenggarong"
+                    years="2010 - 2013"
+                    web="https://sman1-tenggarong.sch.id/"
+                    maps="https://maps.app.goo.gl/ATDE7eFWHeDP5hir8">
+                    Jurusan IPA
+                    <br />
+                  </Rpd>
                   {/* SMP */}
-                  <div className="col-lg-4">
-                    <div className="card w-100 align-items-center py-4">
-                      <h5 className="mb-3 hideme">Sekolah Menengah Pertama</h5>
-                      <img
-                        src="img/smp1.png"
-                        className="card-img-top hideme"
-                        style={{ width: "192px" }}
-                      />
-                      <div className="card-body">
-                        <h6 className="card-title hideme">SMP Negeri 1 Tenggarong</h6>
-                        <p className="hideme">2007 - 2010</p>
-                        <a
-                          href="https://maps.app.goo.gl/Qh8EGsmrwjrJd2Du6"
-                          className="card-link hideme"
-                          target="_blank">
-                          Maps
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <Rpd
+                    col="4"
+                    level="Sekolah Menengah Pertama"
+                    img="smp1"
+                    width="132px"
+                    title="SMP Negeri 1 Tenggarong"
+                    years="2007 - 2010"
+                    web=""
+                    maps="https://maps.app.goo.gl/Qh8EGsmrwjrJd2Du6"
+                  />
                   {/* SD */}
-                  <div className="col-lg-4">
-                    <div className="card w-100 align-items-center py-4">
-                      <h5 className="mb-3 hideme">Sekolah Dasar</h5>
-                      <img
-                        src="img/sdmuh.png"
-                        className="card-img-top hideme"
-                        style={{ width: "150px" }}
-                      />
-                      <div className="card-body">
-                        <h6 className="card-title hideme">SD Muhammadiyah Tenggarong</h6>
-                        <p className="hideme">2001 - 2007</p>
-                        <a
-                          href="https://maps.app.goo.gl/VitGZCia9RLNxEFBA"
-                          className="card-link hideme"
-                          target="_blank">
-                          Maps
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <Rpd
+                    col="4"
+                    level="Sekolah Dasar"
+                    img="sdmuh"
+                    width="103px"
+                    title="SD Muhammadiyah Tenggarong"
+                    years="2001 - 2007"
+                    web=""
+                    maps="https://maps.app.goo.gl/VitGZCia9RLNxEFBA"
+                  />
                 </div>
               </div>
             </section>
@@ -500,7 +510,7 @@
           </div>
         );
       }
-      function RpContent(props) {
+      function RpkContent(props) {
         const { content } = props;
 
         return <li className="hideme fs-6">{content}</li>;
@@ -508,31 +518,18 @@
       function RiwayatPekerjaan() {
         return (
           <>
-            <svg
-              width="100%"
-              height="100%"
-              id="svg"
-              viewBox="0 0 1440 390"
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition duration-300 ease-in-out delay-150">
-              <path
-                d="M 0,400 L 0,100 C 202.13333333333333,74.8 404.26666666666665,49.599999999999994 542,57 C 679.7333333333333,64.4 753.0666666666666,104.4 892,117 C 1030.9333333333334,129.6 1235.4666666666667,114.8 1440,100 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#ffe6e6"
-                fillOpacity="0.53"
-                className="transition-all duration-300 ease-in-out delay-150 path-2"></path>
-              <path
-                d="M 0,400 L 0,233 C 134.13333333333333,248.73333333333335 268.26666666666665,264.4666666666667 420,260 C 571.7333333333333,255.53333333333333 741.0666666666666,230.86666666666667 914,223 C 1086.9333333333334,215.13333333333333 1263.4666666666667,224.06666666666666 1440,233 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#ffe6e6"
-                fillOpacity="1"
-                className="transition-all duration-300 ease-in-out delay-150 path-3"></path>
-            </svg>
+            <Svg
+              d1st="M 0,400 L 0,100 C 202.13333333333333,74.8 404.26666666666665,49.599999999999994 542,57 C 679.7333333333333,64.4 753.0666666666666,104.4 892,117 C 1030.9333333333334,129.6 1235.4666666666667,114.8 1440,100 L 1440,400 L 0,400 Z"
+              fill="#ffe6e6"
+              d2nd="M 0,400 L 0,233 C 134.13333333333333,248.73333333333335 268.26666666666665,264.4666666666667 420,260 C 571.7333333333333,255.53333333333333 741.0666666666666,230.86666666666667 914,223 C 1086.9333333333334,215.13333333333333 1263.4666666666667,224.06666666666666 1440,233 L 1440,400 L 0,400 Z"
+              path1st="2"
+              path2nd="3"
+              transform=""
+            />
             <section
               id="projects"
-              className="bg-light-red">
+              className="bg-light-red pt-0"
+              style={{ marginTop: "-20px" }}>
               <div className="container">
                 <div className="row justify-content-center fs-5 text-center my-3">
                   <div className="col-md-12">
@@ -542,6 +539,7 @@
                     <div
                       className="accordion"
                       id="accordionExample">
+                      {/* rdmp */}
                       <Accord
                         id="collapseOne"
                         title="RDMP Balikpapan JO"
@@ -550,14 +548,15 @@
                         pos="Project Information Staff"
                         time="Agustus 2022 - Sekarang"
                         iframe="1d3227.5204016433245!2d116.82746873806776!3d-1.246214186669645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df14708958cd9a7%3A0x742985cfc8dbb33a!2sKantor%20RDMP%20Balikpapan!5e0!3m2!1sid!2sid!4v1705493578194!5m2!1sid!2sid">
-                        <RpContent content="Mengelola laporan data riwayat keluar masuk gate kilang berbasis web server" />
-                        <RpContent content="Administrasi peminjaman Smart Construction Devices (Tablet PC & Smart Glasses)" />
-                        <RpContent content="Mengembangkan dan memodifikasi aplikasi web yang sudah ada, sesuai kebutuhan pengguna" />
-                        <RpContent
+                        <RpkContent content="Mengelola laporan data riwayat keluar masuk gate kilang berbasis web server" />
+                        <RpkContent content="Administrasi peminjaman Smart Construction Devices (Tablet PC & Smart Glasses)" />
+                        <RpkContent content="Mengembangkan dan memodifikasi aplikasi web yang sudah ada, sesuai kebutuhan pengguna" />
+                        <RpkContent
                           content="Full Stack Web Developer menggunakan : HTML, CSS, Javascript, PHP, Bootstrap, jQuery, React
                           JS, CodeIgniter"
                         />
                       </Accord>
+                      {/* smi */}
                       <Accord
                         id="collapseTwo"
                         title="PT. Samudera Mangkupalas Indonesia"
@@ -566,13 +565,14 @@
                         pos="Junior Software Engineer"
                         time="Desember 2021 - Mei 2022"
                         iframe="1d3989.6867329784586!2d117.17241767588635!3d-0.4653388995300954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df5d601c9e24e2d%3A0x77ea5253cd2d69f7!2sKss%20Group!5e0!3m2!1sid!2sid!4v1705493846226!5m2!1sid!2sid">
-                        <RpContent content="Mengembangkan aplikasi berbasis mobile (Android & iOS)" />
-                        <RpContent content="Membuat rancangan website untuk promosi aplikasi" />
-                        <RpContent
+                        <RpkContent content="Mengembangkan aplikasi berbasis mobile (Android & iOS)" />
+                        <RpkContent content="Membuat rancangan website untuk promosi aplikasi" />
+                        <RpkContent
                           content="Menggunakan HTML, CSS, Javascript, Bootstrap, MongoDB, Express JS, React JS, React
                                       Native, Node JS, Laravel"
                         />
                       </Accord>
+                      {/* joy */}
                       <Accord
                         id="collapseThree"
                         title="PT. Multi Anugerah Lestarindo"
@@ -581,14 +581,15 @@
                         pos="Staff IT"
                         time="Juli 2020 - Oktober 2021"
                         iframe="1d3989.6758028668396!2d117.1623426650495!3d-0.48427987825762675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f5d14ace913%3A0xcd2fd041f9fffcad!2sJoymart!5e0!3m2!1sid!2sid!4v1705493893633!5m2!1sid!2sid">
-                        <RpContent content="Mengurus seluruh urusan IT perusahaan" />
-                        <RpContent content="Mengelola website versi Localhost & Hosting" />
-                        <RpContent
+                        <RpkContent content="Mengurus seluruh urusan IT perusahaan" />
+                        <RpkContent content="Mengelola website versi Localhost & Hosting" />
+                        <RpkContent
                           content="Mengembangkan dan memodifikasi aplikasi yang sudah ada, sesuai kebutuhan
                                       perusahaan"
                         />
-                        <RpContent content="Full Stack Web Developer menggunakan HTML, CSS, Javascript, PHP, jQuery" />
+                        <RpkContent content="Full Stack Web Developer menggunakan HTML, CSS, Javascript, PHP, jQuery" />
                       </Accord>
+                      {/* bumida */}
                       <Accord
                         id="collapseFour"
                         title="PT. Asuransi Umum Bumiputera Muda 1967"
@@ -597,8 +598,8 @@
                         pos="Staf Administrasi"
                         time="Februari 2020 - Mei 2020"
                         iframe="1d3989.681443805266!2d117.1376129199856!3d-0.4745989987099329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67fa113c6a105%3A0x1a4e48da028d3706!2sBumida%20Bumiputera!5e0!3m2!1sid!2sid!4v1705494024407!5m2!1sid!2sid">
-                        <RpContent content="Entry data nasabah" />
-                        <RpContent content="Mengatur klausula sesuai tipe asuransi" />
+                        <RpkContent content="Entry data nasabah" />
+                        <RpkContent content="Mengatur klausula sesuai tipe asuransi" />
                       </Accord>
                     </div>
                   </div>
@@ -610,34 +611,36 @@
       }
 
       /* kontak */
+      function KonContent(props) {
+        const { a, id, icon, title } = props;
+
+        return (
+          <div className="col-md-3">
+            <a
+              href={a}
+              className="text-decoration-none text-light"
+              target="_blank">
+              <h5
+                className="p-3 m-2 text-light rounded hideme"
+                id={id}>
+                <i className={"bi-" + icon}></i> {title}
+              </h5>
+            </a>
+          </div>
+        );
+      }
       function Kontak() {
         return (
           <>
-            <svg
-              width="100%"
-              height="100%"
-              id="svg"
-              viewBox="0 0 1440 390"
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition duration-300 ease-in-out delay-150"
-              style={{ marginTop: "-30px" }}>
-              <path
-                d="M 0,400 L 0,100 C 195.86666666666667,105.73333333333333 391.73333333333335,111.46666666666667 542,104 C 692.2666666666667,96.53333333333333 796.9333333333334,75.86666666666666 939,73 C 1081.0666666666666,70.13333333333334 1260.5333333333333,85.06666666666666 1440,100 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#ffe6e6"
-                fillOpacity="0.53"
-                className="transition-all duration-300 ease-in-out delay-150 path-0"
-                transform="rotate(-180 720 200)"></path>
-              <path
-                d="M 0,400 L 0,233 C 198.93333333333334,232.60000000000002 397.8666666666667,232.20000000000002 558,241 C 718.1333333333333,249.79999999999998 839.4666666666667,267.79999999999995 980,268 C 1120.5333333333333,268.20000000000005 1280.2666666666667,250.60000000000002 1440,233 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#ffe6e6"
-                fillOpacity="1"
-                className="transition-all duration-300 ease-in-out delay-150 path-1"
-                transform="rotate(-180 720 200)"></path>
-            </svg>
+            <Svg
+              d1st="M 0,400 L 0,100 C 195.86666666666667,105.73333333333333 391.73333333333335,111.46666666666667 542,104 C 692.2666666666667,96.53333333333333 796.9333333333334,75.86666666666666 939,73 C 1081.0666666666666,70.13333333333334 1260.5333333333333,85.06666666666666 1440,100 L 1440,400 L 0,400 Z"
+              fill="#ffe6e6"
+              d2nd="M 0,400 L 0,233 C 198.93333333333334,232.60000000000002 397.8666666666667,232.20000000000002 558,241 C 718.1333333333333,249.79999999999998 839.4666666666667,267.79999999999995 980,268 C 1120.5333333333333,268.20000000000005 1280.2666666666667,250.60000000000002 1440,233 L 1440,400 L 0,400 Z"
+              path1st="0"
+              path2nd="1"
+              transform="rotate(-180 720 200)"
+              customStyle="-30px"
+            />
             <section id="contact">
               <div className="container">
                 <div className="row text-center mb-3 hideme">
@@ -647,81 +650,45 @@
                 </div>
                 {/*} FIRST ROW */}
                 <div className="row justify-content-center text-center">
-                  <div className="col-md-3">
-                    <a
-                      href="https://facebook.com/zetopenzom"
-                      className="text-decoration-none text-light"
-                      target="_blank">
-                      <h5
-                        className="p-3 m-2 text-light rounded hideme"
-                        id="fb">
-                        <i className="bi-facebook"></i> Zeto Penzom
-                      </h5>
-                    </a>
-                  </div>
-                  <div className="col-md-3">
-                    <a
-                      href="https://wa.me/6285845750937"
-                      className="text-decoration-none text-light"
-                      target="_blank">
-                      <h5
-                        className="p-3 m-2 text-light rounded hideme"
-                        id="wa">
-                        <i className="bi-whatsapp"></i> +62 858-4575-0937
-                      </h5>
-                    </a>
-                  </div>
-                  <div className="col-md-3">
-                    <a
-                      href="https://www.instagram.com/zetopenzom"
-                      className="text-decoration-none text-light"
-                      target="_blank">
-                      <h5
-                        className="p-3 m-2 text-light rounded hideme"
-                        id="ig">
-                        <i className="bi-instagram"></i> zetopenzom
-                      </h5>
-                    </a>
-                  </div>
+                  <KonContent
+                    a="https://facebook.com/zetopenzom"
+                    id="fb"
+                    icon="facebook"
+                    title="Zeto Penzom"
+                  />
+                  <KonContent
+                    a="https://wa.me/6285845750937"
+                    id="wa"
+                    icon="whatsapp"
+                    title="+62 858-4575-0937"
+                  />
+                  <KonContent
+                    a="https://www.instagram.com/zetopenzom"
+                    id="ig"
+                    icon="instagram"
+                    title="zetopenzom"
+                  />
                 </div>
                 {/*} SECOND ROW */}
                 <div className="row justify-content-center text-center hideme">
-                  <div className="col-md-3">
-                    <a
-                      href="https://github.com/zetopenzom"
-                      className="text-decoration-none text-light"
-                      target="_blank">
-                      <h5
-                        className="p-3 m-2 text-light rounded hideme"
-                        id="git">
-                        <i className="bi-github"></i> zetopenzom
-                      </h5>
-                    </a>
-                  </div>
-                  <div className="col-md-3">
-                    <a
-                      href="https://www.linkedin.com/in/zetopenzom/"
-                      className="text-decoration-none text-light"
-                      target="_blank">
-                      <h5
-                        className="p-3 m-2 text-light rounded hideme"
-                        id="ln">
-                        <i className="bi-linkedin"></i> Bayu Ramadhani
-                      </h5>
-                    </a>
-                  </div>
-                  <div className="col-md-3">
-                    <a
-                      href="https://www.youtube.com/channel/UCeuw2XPPwLRNPgI8ttBzZhg"
-                      className="text-decoration-none text-light"
-                      target="_blank">
-                      <h5
-                        className="p-3 m-2 text-light rounded hideme"
-                        id="yt">
-                        <i className="bi-youtube"></i> Zeto Penzom
-                      </h5>
-                    </a>
-                  </div>
+                  <KonContent
+                    a="https://github.com/zetopenzom"
+                    id="git"
+                    icon="github"
+                    title="zetopenzom"
+                  />
+                  <KonContent
+                    a="https://www.linkedin.com/in/zetopenzom/"
+                    id="ln"
+                    icon="linkedin"
+                    title="Bayu Ramadhani"
+                  />
+                  <KonContent
+                    a="https://www.youtube.com/channel/UCeuw2XPPwLRNPgI8ttBzZhg"
+                    id="yt"
+                    icon="youtube"
+                    title="Zeto Penzom"
+                  />
                 </div>
                 {/*} THIRD ROW */}
                 <div className="row justify-content-center text-center hideme">
@@ -743,28 +710,14 @@
       function Footer() {
         return (
           <>
-            <svg
-              width="100%"
-              height="100%"
-              id="svg"
-              viewBox="0 0 1440 390"
-              xmlns="http://www.w3.org/2000/svg"
-              className="transition duration-300 ease-in-out delay-150">
-              <path
-                d="M 0,400 L 0,100 C 85.63636363636365,105.60765550239233 171.2727272727273,111.21531100478468 276,106 C 380.7272727272727,100.78468899521532 504.5454545454546,84.74641148325358 601,73 C 697.4545454545454,61.25358851674641 766.5454545454546,53.799043062200965 853,61 C 939.4545454545454,68.20095693779903 1043.2727272727273,90.05741626794259 1144,99 C 1244.7272727272727,107.94258373205741 1342.3636363636365,103.97129186602871 1440,100 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#990000"
-                fillOpacity="0.53"
-                className="transition-all duration-300 ease-in-out delay-150 path-4"></path>
-              <path
-                d="M 0,400 L 0,233 C 80.40191387559807,234.6937799043062 160.80382775119614,236.38755980861242 262,227 C 363.19617224880386,217.61244019138758 485.18660287081343,197.14354066985646 573,190 C 660.8133971291866,182.85645933014354 714.4497607655502,189.0382775119617 820,191 C 925.5502392344498,192.9617224880383 1083.0143540669858,190.70334928229667 1195,197 C 1306.9856459330142,203.29665071770333 1373.492822966507,218.14832535885165 1440,233 L 1440,400 L 0,400 Z"
-                stroke="none"
-                strokeWidth="0"
-                fill="#990000"
-                fillOpacity="1"
-                className="transition-all duration-300 ease-in-out delay-150 path-5"></path>
-            </svg>
+            <Svg
+              d1st="M 0,400 L 0,100 C 85.63636363636365,105.60765550239233 171.2727272727273,111.21531100478468 276,106 C 380.7272727272727,100.78468899521532 504.5454545454546,84.74641148325358 601,73 C 697.4545454545454,61.25358851674641 766.5454545454546,53.799043062200965 853,61 C 939.4545454545454,68.20095693779903 1043.2727272727273,90.05741626794259 1144,99 C 1244.7272727272727,107.94258373205741 1342.3636363636365,103.97129186602871 1440,100 L 1440,400 L 0,400 Z"
+              fill="#990000"
+              d2nd="M 0,400 L 0,233 C 80.40191387559807,234.6937799043062 160.80382775119614,236.38755980861242 262,227 C 363.19617224880386,217.61244019138758 485.18660287081343,197.14354066985646 573,190 C 660.8133971291866,182.85645933014354 714.4497607655502,189.0382775119617 820,191 C 925.5502392344498,192.9617224880383 1083.0143540669858,190.70334928229667 1195,197 C 1306.9856459330142,203.29665071770333 1373.492822966507,218.14832535885165 1440,233 L 1440,400 L 0,400 Z"
+              path1st="4"
+              path2nd="5"
+              transform=""
+            />
             <footer className="bg-red text-white text-center pb-5">
               <p className="hideme">
                 Created with <i className="bi bi-heart-fill text-warning"></i> by{" "}
