@@ -77,7 +77,7 @@
   <body class="text-black selection:bg-yellow-300 dark:selection:bg-pink-400">
     <nav
       class="fixed top-0 w-full bg-white dark:bg-zinc-900 neo-border border-t-0 border-l-0 border-r-0 z-50 transition-colors duration-300">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center relative">
         <a
           href="#"
           class="text-xl md:text-2xl font-bold uppercase tracking-tighter"
@@ -133,8 +133,42 @@
                 class="bi bi-moon-fill"
                 id="themeIcon"></i>
             </button>
+            <button
+              id="mobileMenuBtn"
+              class="md:hidden text-3xl ml-2 hover:text-blue-500 transition-colors">
+              <i class="bi bi-list"></i>
+            </button>
           </div>
         </div>
+      </div>
+
+      <div
+        id="mobileMenu"
+        class="hidden absolute top-full left-0 w-full bg-white dark:bg-zinc-900 neo-border border-l-0 border-r-0 border-t-4 flex-col font-bold text-lg">
+        <a
+          href="#about"
+          data-i18n="nav_about"
+          class="mobile-link p-4 border-b-4 border-black dark:border-white hover:bg-yellow-300 hover:text-black transition-colors"
+          >Tentang</a
+        >
+        <a
+          href="#skills"
+          data-i18n="nav_stack"
+          class="mobile-link p-4 border-b-4 border-black dark:border-white hover:bg-blue-400 hover:text-black transition-colors"
+          >Stack</a
+        >
+        <a
+          href="#experience"
+          data-i18n="nav_exp"
+          class="mobile-link p-4 border-b-4 border-black dark:border-white hover:bg-red-400 hover:text-black transition-colors"
+          >Pengalaman</a
+        >
+        <a
+          href="#contact"
+          data-i18n="nav_contact"
+          class="mobile-link p-4 hover:bg-green-400 hover:text-black transition-colors"
+          >Kontak</a
+        >
       </div>
     </nav>
 
@@ -167,7 +201,7 @@
             <img
               src="img/bayu.JPG"
               alt="Bayu Ramadhani"
-              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+              class="w-full h-full object-cover md:grayscale hover:grayscale-0 transition-all duration-300"
               onerror="this.src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Bayu'" />
           </div>
         </div>
@@ -582,6 +616,33 @@
           if (translations[currentLang][key]) {
             element.innerText = translations[currentLang][key];
           }
+        });
+      });
+
+      // 3. LOGIKA MOBILE MENU
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      // Buka/Tutup menu saat tombol garis tiga diklik
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("flex");
+        // Ubah ikon list jadi 'X'
+        const icon = mobileMenuBtn.querySelector("i");
+        if (mobileMenu.classList.contains("hidden")) {
+          icon.classList.replace("bi-x", "bi-list");
+        } else {
+          icon.classList.replace("bi-list", "bi-x");
+        }
+      });
+
+      // Tutup menu otomatis saat salah satu link diklik
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+          mobileMenuBtn.querySelector("i").classList.replace("bi-x", "bi-list");
         });
       });
     </script>
